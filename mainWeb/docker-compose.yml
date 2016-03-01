@@ -1,0 +1,11 @@
+nginx:
+    image: nginx
+    external_links:
+        - owncloud_app_1
+    ports:
+        - 80:80
+        - 443:443
+    volumes:
+        - ./config/:/etc/nginx:ro
+        - ./logs/:/var/log/nginx
+    restart: always

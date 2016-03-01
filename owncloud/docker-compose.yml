@@ -1,0 +1,17 @@
+app:
+  build: ./oc_media
+  links:
+    - db
+  volumes:
+    - ./html:/var/www/html
+    - /media/500GB/OwnCloud/:/data
+    - /media/4TB/poze/:/external/poze
+  restart: always
+db:
+  image: mysql
+  volumes:
+    - ./ocDB:/var/lib/mysql
+    - ./ocDBlogs:/var/log/mysql
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: SomePass
